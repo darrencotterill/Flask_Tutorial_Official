@@ -12,10 +12,9 @@ CREATE TABLE stock (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   symbol STRING NOT NULL,
   link STRING NOT NULL,
-  priority INT NOT NULL,
   user_id INTEGER NOT NULL,
-  percentage_up INT,
-  percentage_down INT,
+  latest_price STRING,
+  percentage_change STRING,
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
 

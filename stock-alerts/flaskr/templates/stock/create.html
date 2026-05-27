@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block header %}
+<h1>{% block title %}New Stock{% endblock %}</h1>
+{% endblock %} {% block content %}
+<form method="post">
+<div class="section">
+        <p class="section-title">Add a new symbol and link to TradingView</p>
+
+        <!-- Three equal columns -->
+        <div class="row cols-1-2">
+          <div class="field">
+            <label for="symbol">Symbol</label>
+              <input
+                name="symbol"
+                id="symbol"
+                value="{{ request.form['symbol'] }}"
+                required />
+          </div>
+          <div class="field">
+            <label for="link">Link</label>
+            <input name="link" id="link" value="{{ request.form['link'] }}" />
+          </div>
+        </div>
+     <div class="form-actions">
+        <button type="button">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+     </div>
+</form>
+{% endblock %}

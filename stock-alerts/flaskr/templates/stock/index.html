@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block header %}
+<h1>{% block title %}Stocks{% endblock %}</h1>
+<div class="section">
+    <p class="section-title">Latest Stock Prices</p>
+        {% for stock in stocks %}
+
+        <!-- Three equal columns -->
+        <div class="row cols-2-1-1X">
+          <div class="field">
+              {{ stock['symbol'] }}
+          </div>
+          <div class="field">
+              {{ stock['latest_price'] }}
+          </div>
+          <div class="field">
+              {{ stock['percentage_change'] }}
+          </div>
+        </div>
+
+        {% endfor %}
+</div>
+{% endblock %}

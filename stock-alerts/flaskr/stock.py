@@ -11,7 +11,7 @@ bp = Blueprint("stock", __name__)
 def index():
     db = get_db()
     stocks = db.execute(
-        "SELECT s.id, symbol, link, priority, u.id, u.username"
+        "SELECT s.id, symbol, link, latest_price, percentage_change, u.id, u.username"
         " FROM stock s JOIN user u ON s.user_id = u.id"
     ).fetchall()
 
@@ -24,10 +24,6 @@ def create():
     if request.method == "POST":
         symbol = request.form["symbol"]
         link = request.form["link"]
-        p_up = request.form["p_up"]
-        p_down = request.form["p_down"]
-        priority = 1
-
         error = None
 
         if error is not None:
@@ -35,9 +31,9 @@ def create():
         else:
             db = get_db()
             db.execute(
-                "INSERT INTO stock (symbol, link, priority, percentage_up, percentage_down, user_id)"
-                " VALUES (?, ?, ?, ?, ?, ?)",
-                (symbol, link, priority, 5, 5, g.user["id"]),
+                "INSERT INTO stock (symbol, link, user_id)"
+                " VALUES (?, ?, ?)",
+                (symbol, link, g.user["id"]),
             )
             db.commit()
             return redirect(url_for("stock.index"))

@@ -40,9 +40,4 @@ def create_app(test_config=None):
     app.register_blueprint(stock.bp)
     app.add_url_rule("/", endpoint="index")
 
-    @app.errorhandler(400)
-    def handle_bad_request(e):
-        app.logger.error(f"Bad Request: {e.description}")
-        return "Custom 400 Error Message", 400
-
     return app
