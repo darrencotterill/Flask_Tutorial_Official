@@ -35,7 +35,7 @@ def build_driver(headless: bool = True) -> webdriver.Chrome:
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
     )
-    service = Service(ChromeDriverManager().install())
+    service = Service(executable_path='/usr/bin/chromedriver')
     driver = webdriver.Chrome(service=service, options=opts)
     driver.execute_cdp_cmd(
         "Page.addScriptToEvaluateOnNewDocument",
