@@ -10,7 +10,7 @@ import sqlite3
 import os
 import time
 
-TIMEOUT = 30
+TIMEOUT = 60
 dir_path = os.path.dirname(os.path.realpath(__file__))
 print (dir_path)
 
@@ -135,7 +135,6 @@ def main():
                     f"{TIMEOUT}s.\nTry running with --no-headless to debug visually.",
                     file=sys.stderr,
                 )
-                sys.exit(1)
             finally:
                 driver.quit()
 
