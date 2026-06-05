@@ -135,7 +135,7 @@ def main():
                     f"{TIMEOUT}s.\nTry running with --no-headless to debug visually.",
                     file=sys.stderr,
                 )
-            except Exception e:
+            except Exception:
                 print("Another exception occured.")
                 print(e)
             finally:
