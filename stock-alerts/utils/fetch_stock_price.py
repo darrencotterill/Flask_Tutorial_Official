@@ -137,7 +137,6 @@ def main():
                 )
             except Exception:
                 print("Another exception occured.")
-                print(e)
             finally:
                 driver.quit()
 
