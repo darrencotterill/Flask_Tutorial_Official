@@ -2,21 +2,26 @@
 <h1>{% block title %}Stonks{% endblock %}</h1>
 <div class="section">
     <p class="section-title">Latest Stock Prices</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>% Change</th>
+              </tr>
+            </thead>
+            <tbody>
         {% for stock in stocks %}
-
-        <!-- Three equal columns -->
-        <div class="row cols-2-1-1X">
-          <div class="field">
-              {{ stock['symbol'] }}
-          </div>
-          <div class="field">
-              {{ stock['latest_price'] }}
-          </div>
-          <div class="field">
-              {{ stock['percentage_change'] }}
-          </div>
-        </div>
-
+            <tr>
+                <td class="col-text">{{ stock['symbol'] }}</td>
+                <td class="col-num">{{ stock['latest_price'] }}</td>
+                <td class="col-num">{{ stock['percentage_change'] }}</td>
+            </tr>
         {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
 </div>
 {% endblock %}
